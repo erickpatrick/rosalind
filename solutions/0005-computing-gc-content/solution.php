@@ -1,13 +1,50 @@
-<?php 
-	function rabbitsRecurrenceRelations($n, $k)
-	{
-		$months = [1, 1];
-		for ($i = 2; $i < $n; $i += 1) {
-			$months[$i] = $months[$i - 1] + ($months[$i - 2] * $k);
+<?php
+
+	function gcContent($input) {
+		$inputCounter = strlen($input);
+		$counter = 0;
+
+		for ($i = 0; $i < $inputCounter; $i += 1) {
+			switch ($input[$i]) {
+				case 'G' : $counter += 1; break;
+				case 'C' : $counter += 1; break;
+			}
 		}
 
-		return $months[$n - 1];
+		// echo $input . " >> " . $inputCounter . " >> " . $counter . "<br/>"; 
+
+		return (($counter / $inputCounter) * 100);
 	}
 
-	echo rabbitsRecurrenceRelations(5, 3);
+	function computingGCContent($input)
+	{
+		$dataset = [];
+		$input = explode(">", $input);
+		foreach ($input as $i) {
+			$set = explode(" ", $i);
+			$dataset[] = [
+				"name" => $set[0], 
+				"sequence" => $set[1], 
+				"gc_content" => null
+			];
+		}
+
+		unset($dataset[0]);
+		$datasetCounter = count($dataset);
+
+		for ($i = 1; $i <= $datasetCounter; $i += 1) {
+			$dataset[$i]['gc_content'] = gcContent($dataset[$i]['sequence']);
+		}
+
+		return $dataset;
+	}
+
+	$input = "
+	>Rosalind_6404 CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG
+	>Rosalind_5959 CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC>Rosalind_0808 CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT";
+	$dataset = computingGCContent($input);
+
+	foreach ($dataset as $d) {
+		echo "<p>{$d['name']}<br/>{$d['gc_content']}";
+	}
 ?>
