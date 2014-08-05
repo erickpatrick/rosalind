@@ -8,15 +8,21 @@
 		return ((($counter['G'] + $counter['C']) / $inputCounter) * 100);
 	}
 
-	function computingGCContent($input)
-	{
+	function properDataset($input) {
 		$dataset = [];
 		$input = explode(">", $input);
 		foreach ($input as $i) {
 			$dataset[] = explode(" ", $i);
 		}
-
 		unset($dataset[0]);
+
+		return $dataset;
+	}
+
+	function computingGCContent($input)
+	{
+		$dataset = properDataset($input);
+		
 		$datasetCounter = count($dataset);
 
 		for ($i = 1; $i <= $datasetCounter; $i += 1) {
