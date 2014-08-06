@@ -1,7 +1,7 @@
 <?php
   require 'vendor/autoload.php';
 
-  $dna = new Acme\Rna();
+  $test = new Acme\Revc();
 
-  echo $dna->transcribeDNAIntoRNA('GATGGAACTTGACTACGTAAATT');
+  echo $test->complementingStrandDNA('AAAACCCGGT');
 ?>
