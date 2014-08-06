@@ -1,7 +1,12 @@
 <?php
   require 'vendor/autoload.php';
 
-  $test = new Acme\Fib();
+  $test = new Acme\Gc();
 
-  echo $test->rabbitsRecurrenceRelations(5, 3);
+  $dataset = $test->computingGCContent(">Rosalind_6404 CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG>Rosalind_5959 CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC>Rosalind_0808 CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT");
+
+  foreach ($dataset as $d) {
+    echo "<p>{$d['0']}<br/>{$d['2']}";
+  }
+
 ?>
