@@ -3,6 +3,9 @@
 class Revc {
 	public function complementingStrandDNA($input)
 	{
-		return strtr(strrev($input), ["A" => "T", "C" => "G", "G" => "C", "T" => "A"]);
+		return strtr(
+			strrev($input), 
+			["A" => "T", "C" => "G", "G" => "C", "T" => "A"]
+		);
 	}
 }
