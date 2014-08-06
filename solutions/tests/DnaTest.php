@@ -12,11 +12,22 @@
       $this->dna = new Dna();
     }
 
-    public function testCountDNANucleotides()
+    /**
+     * @dataProvider dnaProvider
+     */
+    public function testCountDNANucleotides($input, $expected)
     {
       $this->assertEquals(
-        $this->dna->countDNANucleotides("AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC"),
-        "20 12 17 21");
+        $this->dna->countDNANucleotides($input),
+        $expected
+      );
+    }
+
+    public function dnaProvider()
+    {
+      return [
+        ["AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC", "20 12 17 21"]
+      ];
     }
 
   }
