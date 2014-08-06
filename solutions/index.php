@@ -1,7 +1,7 @@
 <?php
   require 'vendor/autoload.php';
 
-  $dna = new Acme\Dna();
+  $dna = new Acme\Rna();
 
-  echo $dna->countDNANucleotides('acgt');
+  echo $dna->transcribeDNAIntoRNA('GATGGAACTTGACTACGTAAATT');
 ?>
