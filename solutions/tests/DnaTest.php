@@ -26,6 +26,8 @@
     public function dnaProvider()
     {
       return [
+        ["ACGT", "1 1 1 1"],
+        ["ACGTACGTACGTACGTACGTACGTACGTACGTACGTACGT", "10 10 10 10"],
         ["AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC", "20 12 17 21"]
       ];
     }
