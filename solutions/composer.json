@@ -1,0 +1,11 @@
+{
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {"Acme\\": "src/"}
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "stable"
+}

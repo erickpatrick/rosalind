@@ -1,4 +1,4 @@
-<?php 
+<?php
 	function rabbitsRecurrenceRelations($n, $k)
 	{
 		$months = [1, 1];
@@ -9,5 +9,5 @@
 		return $months[$n - 1];
 	}
 
-	echo rabbitsRecurrenceRelations(5, 3);
+	echo rabbitsRecurrenceRelations(10, 3);
 ?>
