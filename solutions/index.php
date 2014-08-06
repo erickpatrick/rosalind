@@ -1,7 +1,7 @@
 <?php
   require 'vendor/autoload.php';
 
-  $test = new Acme\Revc();
+  $test = new Acme\Fib();
 
-  echo $test->complementingStrandDNA('AAAACCCGGT');
+  echo $test->rabbitsRecurrenceRelations(5, 3);
 ?>

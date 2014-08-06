@@ -1,5 +1,7 @@
-<?php
-	function rabbitsRecurrenceRelations($n, $k)
+<?php namespace Acme;
+
+class Fib {
+	public function rabbitsRecurrenceRelations($n, $k)
 	{
 		$months = [1, 1];
 		for ($i = 2; $i < $n; $i += 1) {
@@ -8,6 +10,4 @@
 
 		return $months[$n - 1];
 	}
-
-	echo rabbitsRecurrenceRelations(10, 3);
-?>
+}
