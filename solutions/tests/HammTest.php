@@ -1,23 +1,23 @@
 <?php
 require 'vendor/autoload.php';
 
-use Acme\Gc;
+use Acme\Hamm;
 
-class GcTest extends PHPUnit_Framework_TestCase {
+class HammTest extends PHPUnit_Framework_TestCase {
 	private $gc;
 
     public function setUp()
     {
-      $this->gc = new Gc();
+      $this->hamm = new Hamm();
     }
 
     /**
      * @dataProvider dataProviderAHSL
      */
-    public function testArraysHaveSameLength($input, $proper, $gcContent, $expected)
+    public function testArraysHaveSameLength($a, $b, $expected)
     {
       $this->assertEquals(
-        $this->gc->arraysHaveSameLength($input),
+        $this->hamm->arraysHaveSameLength($a, $b),
         $expected
       );
     }
@@ -25,11 +25,11 @@ class GcTest extends PHPUnit_Framework_TestCase {
     /**
      * @dataProvider dataProviderCC
      */
-    public function testCompareChars($input, $proper, $gcContent, $expected)
+    public function testCompareChars($a, $b, $expected)
     {
       $this->assertEquals(
-        $this->gc->compareChars($input),
-        $proper
+        $this->hamm->compareChars($a, $b),
+        $expected
       );
     }
 
@@ -39,7 +39,7 @@ class GcTest extends PHPUnit_Framework_TestCase {
     public function testCountingPointMutations($input, $expected)
     {
       $this->assertEquals(
-        $this->gc->countingPointMutations($input),
+        $this->hamm->countingPointMutations($input),
         $expected
       );
     }
@@ -47,19 +47,19 @@ class GcTest extends PHPUnit_Framework_TestCase {
     public function dataProviderCPM()
     {
       return [
-        ["GAGCCTACTAACGGGAT CATCGTAATGACGGCCT", 7]	
+        ["GAGCCTACTAACGGGAT CATCGTAATGACGGCCT", 7]
       ];
     }
 
     public function dataProviderCC()
     {
         return [
-            [['A'], ['A'], true],
-            [['A'], ['G'], false],
-            [['A'], [''], false],
-            [['A'], [1], false],
-            [['A'], [[]], false],
-            [['A'], [(new stdClass)], false],
+            ['A', 'A', true],
+            ['A', 'G', false],
+            ['A', [''], false],
+            ['A', 1, false],
+            ['A', [], false],
+            ['A', (new stdClass), false],
         ];
     }
 

@@ -5,6 +5,21 @@ use Acme\Gc;
 
 class GcTest extends PHPUnit_Framework_TestCase {
 	private $gc;
+  private $dna = ">Rosalind_6404 CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG>Rosalind_5959 CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC>Rosalind_0808 CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT";
+  private $beforeGcContent = [
+    1 => [
+      "Rosalind_6404",
+      "CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG"
+    ],
+    2 => [
+      "Rosalind_5959",
+      "CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC"
+    ],
+    3 => [
+      "Rosalind_0808",
+      "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"
+    ]
+  ];
 
     public function setUp()
     {
@@ -12,9 +27,31 @@ class GcTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @dataProvider dataProvider
+     * @dataProvider dataProviderProper
      */
-    public function testComputingGCContent($input, $proper, $gcContent, $expected)
+    public function testProperDataset($input, $expected)
+    {
+      $this->assertEquals(
+        $this->gc->properDataset($input),
+        $expected
+      );
+    }
+
+    /**
+     * @dataProvider dataProviderGc
+     */
+    public function testGcContent($input, $expected)
+    {
+      $this->assertEquals(
+        $this->gc->gcContent($input),
+        $expected
+      );
+    }
+
+    /**
+     * @dataProvider dataProviderCGCC
+     */
+    public function testComputingGCContent($input, $expected)
     {
       $this->assertEquals(
         $this->gc->computingGCContent($input),
@@ -22,66 +59,44 @@ class GcTest extends PHPUnit_Framework_TestCase {
       );
     }
 
-    /**
-     * @dataProvider dataProvider
-     */
-    public function testProperDataset($input, $proper, $gcContent, $expected)
+    public function dataProviderProper()
     {
-      $this->assertEquals(
-        $this->gc->properDataset($input),
-        $proper
-      );
+      return [
+        [$this->dna, $this->beforeGcContent]
+      ];
     }
 
-    /**
-     * @dataProvider dataProvider
-     */
-    public function testProperDataset($input, $proper, $gcContent, $expected)
+    public function dataProviderGc()
     {
-      $this->assertEquals(
-        $this->gc->gcContent($proper[0][1]),
-        $gcContent
-      );
+      return [
+        [$this->beforeGcContent[1][1], 53.75],
+        [$this->beforeGcContent[2][1], 53.571428571428569],
+        [$this->beforeGcContent[3][1], 60.919540229885058]
+      ];
     }
 
-    public function dataProvider()
+    public function dataProviderCGCC()
     {
       return [
         [
-        	">Rosalind_6404 CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG>Rosalind_5959 CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC>Rosalind_0808 CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT", 
-        	[
-        		[1] => [
-        			[0] => "Rosaling_6404",
-        			[1] => "CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG"
-        		],
-        		[2] => [
-        			[0] => "Rosalind_5959",
-        			[1] => "CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC"
-        		],
-        		[3] => [
-        			[0] => "Rosalind_0808",
-        			[1] => "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"
-        		]
-        	],
-        	53.75,
-        	[
-        		[1] => [
-        			[0] => "Rosaling_6404",
-        			[1] => "CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG",
-        			53.75
-        		],
-        		[2] => [
-        			[0] => "Rosalind_5959",
-        			[1] => "CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC",
-        			53.571428571429
-        		],
-        		[3] => [
-        			[0] => "Rosalind_0808",
-        			[1] => "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT",
-        			60.919540229885
-        		]
-        	]
-
+          $this->dna,
+          [
+            1 => [
+              $this->beforeGcContent[1][0],
+              $this->beforeGcContent[1][1],
+              53.75
+            ],
+            2 => [
+              $this->beforeGcContent[2][0],
+              $this->beforeGcContent[2][1],
+              53.571428571428569
+            ],
+            3 => [
+              $this->beforeGcContent[3][0],
+              $this->beforeGcContent[3][1],
+              60.919540229885058
+            ],
+          ]
         ]
       ];
     }

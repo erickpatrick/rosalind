@@ -23,7 +23,7 @@ class Gc {
 	public function computingGCContent($input)
 	{
 		$dataset = $this->properDataset($input);
-		
+
 		$datasetCounter = count($dataset);
 
 		for ($i = 1; $i <= $datasetCounter; $i += 1) {
