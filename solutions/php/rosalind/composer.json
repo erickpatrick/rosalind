@@ -2,7 +2,7 @@
   "require": {
   },
   "autoload": {
-    "psr-4": {"Acme\\": "src/"}
+    "psr-4": {"Acme\\": "./"}
   },
   "config": {
     "preferred-install": "dist"
