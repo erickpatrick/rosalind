@@ -1,6 +1,6 @@
-<?php ini_set('error_reporting', E_ALL);
+<?php namespace Acme;
 
-//namespace Acme;
+ini_set('error_reporting', E_ALL);
 
 class Iprb {
   // zygotus
@@ -18,17 +18,17 @@ class Iprb {
     $this->fillBasePopulation($n, 'n');
   }
 
+    private function fillBasePopulation($multiplier, $zygotus)
+    {
+        for ($i = 1; $i <= $multiplier; $i += 1) {
+            $this->breeders[] = $this->$zygotus;
+        }
+    }
+
   public function probabilityDominant()
   {
     $totals = $this->breedersDescendants();
     return 1 - ($totals['aa'] / count($this->descendants));
-  }
-
-  private function fillBasePopulation($multiplier, $zygotus)
-  {
-    for ($i = 1; $i <= $multiplier; $i += 1) {
-      $this->breeders[] = $this->$zygotus;
-    }
   }
 
   private function breedersDescendants()
