@@ -1,33 +1,30 @@
-<?php
-  require '../vendor/autoload.php';
+<?php require __DIR__ . '../vendor/autoload.php';
 
-  use Acme\Rna;
+use Acme\Rna;
 
-	class RnaTest extends PHPUnit_Framework_TestCase {
-
+class RnaTest extends PHPUnit_Framework_TestCase {
     private $rna;
 
     public function setUp()
     {
-      $this->rna = new Rna();
+        $this->rna = new Rna();
     }
 
     /**
-     * @dataProvider dnaProvider
-     */
+    * @dataProvider dnaProvider
+    */
     public function testTranscribeDNAIntoRNA($input, $expected)
     {
-      $this->assertEquals(
-        $this->rna->transcribeDNAIntoRNA($input),
-        $expected
-      );
+        $this->assertEquals(
+            $this->rna->transcribeDNAIntoRNA($input),
+            $expected
+        );
     }
 
     public function dnaProvider()
     {
-      return [
-        ["GATGGAACTTGACTACGTAAATT", "GAUGGAACUUGACUACGUAAAUU"]
-      ];
+        return [
+            ["GATGGAACTTGACTACGTAAATT", "GAUGGAACUUGACUACGUAAAUU"]
+        ];
     }
-
-  }
+}

@@ -1,29 +1,28 @@
-<?php require '../vendor/autoload.php';
+<?php require __DIR__ . '../vendor/autoload.php';
 
 use Acme\Iprb;
 
 /**
- * Class IprbTest
- */
+* Class IprbTest
+*/
 class IprbTest extends PHPUnit_Framework_TestCase
 {
-
     /**
-     * @var
-     */
+    * @var
+    */
     public $iprb;
 
     /**
-     * @dataProvider dnaProvider
-     */
+    * @dataProvider dnaProvider
+    */
     public function setUp($k, $m, $n)
     {
         $this->iprb = new Iprb($k, $m, $n);
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function dnaProvider()
     {
         return [2, 2, 2];

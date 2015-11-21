@@ -1,35 +1,36 @@
 <?php namespace Acme;
 
 class Gc {
-	public function gcContent($input) {
-		$input = str_split($input);
-		$counter = array_count_values($input);
-		$inputCounter = count($input);
+    public function gcContent($input) {
+        $input = str_split($input);
+        $counter = array_count_values($input);
+        $inputCounter = count($input);
 
-		return ((($counter['G'] + $counter['C']) / $inputCounter) * 100);
-	}
+        return ((($counter['G'] + $counter['C']) / $inputCounter) * 100);
+    }
 
-	public function properDataset($input) {
-		$dataset = [];
-		$input = explode(">", $input);
-		foreach ($input as $i) {
-			$dataset[] = explode(" ", $i);
-		}
-		unset($dataset[0]);
+    public function properDataset($input) {
+        $dataset = [];
 
-		return $dataset;
-	}
+        $input = explode(">", $input);
+        foreach ($input as $i) {
+            $dataset[] = explode(" ", $i);
+        }
+        unset($dataset[0]);
 
-	public function computingGCContent($input)
-	{
-		$dataset = $this->properDataset($input);
+        return $dataset;
+    }
 
-		$datasetCounter = count($dataset);
+    public function computingGCContent($input)
+    {
+        $dataset = $this->properDataset($input);
 
-		for ($i = 1; $i <= $datasetCounter; $i += 1) {
-			$dataset[$i][] = $this->gcContent($dataset[$i]['1']);
-		}
+        $datasetCounter = count($dataset);
 
-		return $dataset;
-	}
+        for ($i = 1; $i <= $datasetCounter; $i += 1) {
+            $dataset[$i][] = $this->gcContent($dataset[$i]['1']);
+        }
+
+        return $dataset;
+    }
 }

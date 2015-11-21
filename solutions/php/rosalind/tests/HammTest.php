@@ -1,54 +1,53 @@
-<?php
-require '../vendor/autoload.php';
+<?php require __DIR__ . '../vendor/autoload.php';
 
 use Acme\Hamm;
 
 class HammTest extends PHPUnit_Framework_TestCase {
-	private $gc;
+    private $gc;
 
     public function setUp()
     {
-      $this->hamm = new Hamm();
+        $this->hamm = new Hamm();
     }
 
     /**
-     * @dataProvider dataProviderAHSL
-     */
+    * @dataProvider dataProviderAHSL
+    */
     public function testArraysHaveSameLength($a, $b, $expected)
     {
-      $this->assertEquals(
-        $this->hamm->arraysHaveSameLength($a, $b),
-        $expected
-      );
+        $this->assertEquals(
+            $this->hamm->arraysHaveSameLength($a, $b),
+            $expected
+        );
     }
 
     /**
-     * @dataProvider dataProviderCC
-     */
+    * @dataProvider dataProviderCC
+    */
     public function testCompareChars($a, $b, $expected)
     {
-      $this->assertEquals(
-        $this->hamm->compareChars($a, $b),
-        $expected
-      );
+        $this->assertEquals(
+            $this->hamm->compareChars($a, $b),
+            $expected
+        );
     }
 
     /**
-     * @dataProvider dataProviderCPM
-     */
+    * @dataProvider dataProviderCPM
+    */
     public function testCountingPointMutations($input, $expected)
     {
-      $this->assertEquals(
-        $this->hamm->countingPointMutations($input),
-        $expected
-      );
+        $this->assertEquals(
+            $this->hamm->countingPointMutations($input),
+            $expected
+        );
     }
 
     public function dataProviderCPM()
     {
-      return [
-        ["GAGCCTACTAACGGGAT CATCGTAATGACGGCCT", 7]
-      ];
+        return [
+            ["GAGCCTACTAACGGGAT CATCGTAATGACGGCCT", 7]
+        ];
     }
 
     public function dataProviderCC()
@@ -73,4 +72,3 @@ class HammTest extends PHPUnit_Framework_TestCase {
         ];
     }
 }
-

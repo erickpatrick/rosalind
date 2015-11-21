@@ -1,32 +1,31 @@
-<?php
-require '../vendor/autoload.php';
+<?php require __DIR__ . '../vendor/autoload.php';
 
 use Acme\Fib;
 
 class FibTest extends PHPUnit_Framework_TestCase {
-	private $fib;
+    private $fib;
 
     public function setUp()
     {
-      $this->fib = new Fib();
+        $this->fib = new Fib();
     }
 
     /**
-     * @dataProvider dataProvider
-     */
+    * @dataProvider dataProvider
+    */
     public function testRabbitsRecurrenceRelations($n, $k, $expected)
     {
-      $this->assertEquals(
-        $this->fib->rabbitsRecurrenceRelations($n, $k),
-        $expected
-      );
+        $this->assertEquals(
+            $this->fib->rabbitsRecurrenceRelations($n, $k),
+            $expected
+        );
     }
 
     public function dataProvider()
     {
-      return [
-        [5, 3, 19],
-        [6, 3, 40]
-      ];
+        return [
+            [5, 3, 19],
+            [6, 3, 40]
+        ];
     }
 }
