@@ -2,7 +2,8 @@
 
 use Acme\Fib;
 
-class FibTest extends PHPUnit_Framework_TestCase {
+class FibTest extends PHPUnit_Framework_TestCase 
+{
     private $fib;
 
     public function setUp()

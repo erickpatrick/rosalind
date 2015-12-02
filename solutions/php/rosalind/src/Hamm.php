@@ -1,6 +1,7 @@
 <?php namespace Acme;
 
-class Hamm {
+class Hamm 
+{
     public function compareChars($a, $b) 
     {
         return ($a === $b) ? 1 : 0;

@@ -2,7 +2,8 @@
 
 use Acme\Helper\Dna;
 
-class Subs {
+class Subs 
+{
 
     /** Acme\Helper\Dna $dnaHelper */
     private $dnaHelper;

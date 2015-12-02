@@ -2,7 +2,8 @@
 
 use Acme\Prot;
 
-class ProtTest extends PHPUnit_Framework_TestCase {
+class ProtTest extends PHPUnit_Framework_TestCase 
+{
     /** @var Acme\Prot $prot */
     private $prot;
 

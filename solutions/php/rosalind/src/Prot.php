@@ -1,6 +1,7 @@
 <?php namespace Acme;
 
-class Prot {
+class Prot 
+{
     private $rnaCodonsTable = [
         'F' => ['UUU', 'UUC'],
         'L' => ['UUA', 'UUG', 'CUU', 'CUC', 'CUA', 'CUG'],

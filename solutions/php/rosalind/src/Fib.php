@@ -1,6 +1,7 @@
 <?php namespace Acme;
 
-class Fib {
+class Fib 
+{
     public function rabbitsRecurrenceRelations($n, $k)
     {
         $months = [1, 1];

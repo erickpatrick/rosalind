@@ -2,7 +2,8 @@
 
 use Acme\Dna;
 
-class DnaTest extends PHPUnit_Framework_TestCase {
+class DnaTest extends PHPUnit_Framework_TestCase 
+{
 
     private $dna;
 

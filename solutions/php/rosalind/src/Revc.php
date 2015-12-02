@@ -1,6 +1,7 @@
 <?php namespace Acme;
 
-class Revc {
+class Revc 
+{
     public function complementingStrandDNA($input)
     {
         return strtr(

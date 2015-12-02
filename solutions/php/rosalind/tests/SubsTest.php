@@ -3,7 +3,8 @@
 use Acme\Subs;
 use Acme\Helper\Dna;
 
-class SubsTest extends PHPUnit_Framework_TestCase {
+class SubsTest extends PHPUnit_Framework_TestCase 
+{
     /** @var Acme\Prot $prot */
     private $subs;
 

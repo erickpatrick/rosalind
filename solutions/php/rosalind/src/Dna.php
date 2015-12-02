@@ -1,6 +1,7 @@
 <?php namespace Acme;
 
-class Dna {
+class Dna 
+{
     public function countDNANucleotides($input)
     {
         $count = array_count_values(str_split($input));

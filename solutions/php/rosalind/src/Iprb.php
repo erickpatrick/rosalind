@@ -2,7 +2,8 @@
 
 ini_set('error_reporting', E_ALL);
 
-class Iprb {
+class Iprb 
+{
     // zygotus
     private $k = 'AA';
     private $m = 'Aa';

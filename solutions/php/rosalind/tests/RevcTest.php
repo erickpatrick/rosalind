@@ -2,7 +2,8 @@
 
 use Acme\Revc;
 
-class RevcTest extends PHPUnit_Framework_TestCase {
+class RevcTest extends PHPUnit_Framework_TestCase 
+{
     private $revc;
 
     public function setUp()

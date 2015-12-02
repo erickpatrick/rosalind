@@ -1,6 +1,7 @@
 <?php namespace Acme;
 
-class Gc {
+class Gc 
+{
     public function gcContent($input) {
         $input = str_split($input);
         $counter = array_count_values($input);

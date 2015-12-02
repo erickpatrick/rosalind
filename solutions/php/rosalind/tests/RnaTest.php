@@ -2,7 +2,8 @@
 
 use Acme\Rna;
 
-class RnaTest extends PHPUnit_Framework_TestCase {
+class RnaTest extends PHPUnit_Framework_TestCase 
+{
     private $rna;
 
     public function setUp()
