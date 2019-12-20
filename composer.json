@@ -1,7 +1,9 @@
 {
   "name": "erickpatrick/rosalind",
   "description": "Erick's solutions to Rosaling problems",
+  "type": "project",
   "require": {
+    "php": "~7.4.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.5"
