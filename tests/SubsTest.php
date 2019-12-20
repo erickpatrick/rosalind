@@ -1,26 +1,20 @@
-<?php require __DIR__ . '/../vendor/autoload.php';
+<?php declare(strict_types=1);
+
+require __DIR__ . './../vendor/autoload.php';
 
 use Acme\Subs;
 use Acme\Helper\Dna;
+use PHPUnit\Framework\TestCase;
 
-class SubsTest extends PHPUnit_Framework_TestCase 
+class SubsTest extends TestCase 
 {
-    /** @var Acme\Prot $prot */
-    private $subs;
-
-    public function setUp()
-    {
-        $dnaHelper = new Dna();
-        $this->subs = new Subs($dnaHelper);
-    }
-
     /**
     * @dataProvider dataProviderSampleInput
     */
     public function testFindAllMotifsInDna($rnaString, $rnaSubstring, $sampleResult)
     {
         $this->assertEquals(
-            $this->subs->findAllMotifsInDna($rnaString, $rnaSubstring),
+            (new Subs(new Dna()))->findAllMotifsInDna($rnaString, $rnaSubstring),
             $sampleResult
         );
     }

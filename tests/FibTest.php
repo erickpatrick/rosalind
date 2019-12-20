@@ -1,23 +1,19 @@
-<?php require __DIR__ . '/../vendor/autoload.php';
+<?php declare(strict_types=1);
+
+require __DIR__ . './../vendor/autoload.php';
 
 use Acme\Fib;
+use PHPUnit\Framework\TestCase;
 
-class FibTest extends PHPUnit_Framework_TestCase 
+class FibTest extends TestCase 
 {
-    private $fib;
-
-    public function setUp()
-    {
-        $this->fib = new Fib();
-    }
-
     /**
     * @dataProvider dataProvider
     */
     public function testRabbitsRecurrenceRelations($n, $k, $expected)
     {
         $this->assertEquals(
-            $this->fib->rabbitsRecurrenceRelations($n, $k),
+            (new Fib())->rabbitsRecurrenceRelations($n, $k),
             $expected
         );
     }

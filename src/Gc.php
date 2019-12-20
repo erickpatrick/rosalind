@@ -1,4 +1,6 @@
-<?php
+<?php 
+
+declare(strict_types=1);
 
 namespace Acme;
 
@@ -31,7 +33,7 @@ class Gc
 
         return array_filter(array_map(
             // removes spaces from both ends and merge lines for each string
-            fn ($dna) => trim(preg_replace('/\n/', '', $dna)),
+            fn ($dna) => trim(preg_replace('/\n|\r\n/', '', $dna)),
 
             // slipt where each dns string starts and remove empty entries
             preg_split('/(>Rosalind_[0-9]+)/', $input, -1, PREG_SPLIT_NO_EMPTY)

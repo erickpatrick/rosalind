@@ -1,16 +1,20 @@
-<?php namespace Acme;
+<?php declare(strict_types=1);
+
+namespace Acme;
+
+use RuntimeException;
 
 class Hamm 
 {
     public function countingPointMutations(string $input): int
     {
-        $input = preg_split('/\n/', $input);
+        $input = preg_split('/\n|\r\n/', $input);
 
         $countInput = strlen($input[0]);
         $numberOfMutations = 0;
 
         if (!$this->doDnaStringsHaveSameLength($input[0], $input[1])) {
-            return 'Different size strings';
+            throw new RuntimeException('Different size strings');
         }
 
         for ($i = 0; $i < $countInput; $i += 1) {
@@ -20,7 +24,7 @@ class Hamm
         return $numberOfMutations;
     }
 
-    private function compareChars(string $a, string $b): bool
+    private function compareChars(string $a, string $b): int
     {
         return ($a === $b) ? 1 : 0;
     }

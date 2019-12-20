@@ -1,6 +1,8 @@
-<?php namespace Acme;
+<?php 
 
-ini_set('error_reporting', E_ALL);
+declare(strict_types=1);
+
+namespace Acme;
 
 class Iprb 
 {

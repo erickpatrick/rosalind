@@ -1,24 +1,19 @@
-<?php require __DIR__ . '/../vendor/autoload.php';
+<?php declare(strict_types=1);
+
+require __DIR__ . './../vendor/autoload.php';
 
 use Acme\Prot;
+use PHPUnit\Framework\TestCase;
 
-class ProtTest extends PHPUnit_Framework_TestCase 
+class ProtTest extends TestCase 
 {
-    /** @var Acme\Prot $prot */
-    private $prot;
-
-    public function setUp()
-    {
-        $this->prot = new Prot();
-    }
-
     /**
     * @dataProvider dataProviderSampleInput
     */
     public function testTranslateRnaIntoProteinWithSampleInput($sampleRna, $sampleResult)
     {
         $this->assertEquals(
-            $this->prot->translateRnaIntoProtein($sampleRna), 
+            (new Prot())->translateRnaIntoProtein($sampleRna), 
             $sampleResult
         );
     }

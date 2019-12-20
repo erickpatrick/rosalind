@@ -1,23 +1,19 @@
-<?php require __DIR__ . '/../vendor/autoload.php';
+<?php declare(strict_types=1);
+
+require __DIR__ . './../vendor/autoload.php';
 
 use Acme\Revc;
+use PHPUnit\Framework\TestCase;
 
-class RevcTest extends PHPUnit_Framework_TestCase 
+class RevcTest extends TestCase 
 {
-    private $revc;
-
-    public function setUp()
-    {
-        $this->revc = new Revc();
-    }
-
     /**
     * @dataProvider dnaProvider
     */
     public function testComplementingStrandDNA($input, $expected)
     {
         $this->assertEquals(
-            $this->revc->complementingStrandDNA($input),
+            (new Revc())->complementingStrandDNA($input),
             $expected
         );
     }

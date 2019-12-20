@@ -1,24 +1,19 @@
-<?php require __DIR__ . '/../vendor/autoload.php';
+<?php declare(strict_types=1);
+
+require __DIR__ . './../vendor/autoload.php';
 
 use Acme\Dna;
+use PHPUnit\Framework\TestCase;
 
-class DnaTest extends PHPUnit_Framework_TestCase 
+class DnaTest extends TestCase 
 {
-
-    private $dna;
-
-    public function setUp()
-    {
-        $this->dna = new Dna();
-    }
-
     /**
     * @dataProvider dnaProvider
     */
     public function testCountDNANucleotides($input, $expected)
     {
         $this->assertEquals(
-            $this->dna->countDNANucleotides($input),
+            (new Dna())->countDNANucleotides($input),
             $expected
         );
     }
